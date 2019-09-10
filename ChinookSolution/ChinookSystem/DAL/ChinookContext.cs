@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace ChinookSystem.DAL
 {
-    internal class ChinookContext:DbContext
+    internal class ChinookContext : DbContext
     {
         public ChinookContext() : base("ChinookDB")
         {
@@ -20,5 +20,8 @@ namespace ChinookSystem.DAL
 
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Album> Albums { get; set; }
+        public DbSet<Track> Tracks { get; set; }
+        public DbSet<Genre> Generes { get; set; }
+        public DbSet<MediaType> MediaTypes { get; set; }
     }
 }
