@@ -28,6 +28,5 @@ namespace ChinookSystem.BLL
                 return context.Albums.Find(albumid);
             }
         }
-
     }
 }
