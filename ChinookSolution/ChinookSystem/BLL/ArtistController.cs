@@ -14,7 +14,7 @@ namespace ChinookSystem.BLL
 {
     public class ArtistController
     {
-        public List<Artist> Arists_List()
+        public List<Artist> Artists_List()
         {
             using (var context = new ChinookContext())
             {

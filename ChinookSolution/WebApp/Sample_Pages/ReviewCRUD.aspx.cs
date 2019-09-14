@@ -27,7 +27,7 @@ namespace WebApp.Sample_Pages
         protected void BindArtistList()
         {
             ArtistController sysmgr = new ArtistController();
-            List<Artist> info = sysmgr.Arists_List();
+            List<Artist> info = sysmgr.Artists_List();
             info.Sort((x, y) => x.Name.CompareTo(y.Name));
             ArtistList.DataSource = info;
             ArtistList.DataTextField = nameof(Artist.Name);
