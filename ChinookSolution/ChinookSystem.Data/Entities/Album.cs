@@ -15,23 +15,23 @@ namespace ChinookSystem.Data.Entities
         public int ArtistId { get; set; }
         public int ReleaseYear { get; set; }
 
-        private string _ReleaseLable;
+        private string _ReleaseLabel;
 
-        public string ReleaseLable
+        public string ReleaseLabel
         {
             get
             {
-                return _ReleaseLable;
+                return _ReleaseLabel;
             }
             set
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    _ReleaseLable = null;
+                    _ReleaseLabel = null;
                 }
                 else
                 {
-                    _ReleaseLable = value;
+                    _ReleaseLabel = value;
                 }
             }
         }
