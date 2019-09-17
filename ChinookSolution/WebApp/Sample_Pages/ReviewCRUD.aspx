@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="CRUD Review" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReviewCRUD.aspx.cs" Inherits="WebApp.Sample_Pages.ReviewCRUD" %>
+
+<%@ Register Src="~/UserControls/messageUserControl.ascx" TagPrefix="uc1" TagName="messageUserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
  <h1>Filter Search</h1>
     <blockquote class="alert alert-info">
@@ -6,8 +9,34 @@
         code-behind and ObjectDataSource on multi-record controls. This page will
         use various form controls. This will review event driven logic reuired for a CRUD process.
     </blockquote>
+
+
     <div class="col-md-offset-1">
-      
+        <uc1:messageUserControl runat="server" id="messageUserControl" />
+        <br /><br />
+        <!--Validation controls -->
+        <asp:RequiredFieldValidator ID="RequiredFieldEditTitle" runat="server" 
+            ErrorMessage="Title field is required" Display="None" 
+            ForeColor="IndianRed" SetFocusOnError="true"
+            ControlToValidate="EditTitle">
+        </asp:RequiredFieldValidator>
+          <asp:RequiredFieldValidator 
+            ID="RequiredFieldEditReleaseYear" 
+            runat="server" 
+            ErrorMessage="Year field is required" Display="None" 
+            ForeColor="IndianRed" SetFocusOnError="true"
+            ControlToValidate="EditReleaseYear">
+        </asp:RequiredFieldValidator>
+        <asp:RangeValidator 
+            ID="RangeEditReleaseYear" 
+            runat="server" 
+            ErrorMessage="Year needs to be between 1950 and today." 
+            Display="None" ForeColor="IndianRed" 
+            SetFocusOnError="true" 
+            ControlToValidate="EditReleaseYear"
+            Type="Integer" MinimumValue="1950" >
+        </asp:RangeValidator>
+        <asp:ValidationSummary ID="ValidationSummary" runat="server" /><br />
         <asp:Label ID="label1" runat="server" Text="Select an artist:"></asp:Label>
         &nbsp;&nbsp;
         <asp:DropDownList ID="ArtistList" runat="server"></asp:DropDownList>
@@ -71,15 +100,18 @@
         <asp:LinkButton ID="Update" runat="server" >Update</asp:LinkButton> &nbsp;&nbsp;
         <asp:LinkButton ID="Remove" runat="server" CausesValidation="false">Remove</asp:LinkButton>
     </div>
+   
     <asp:ObjectDataSource ID="AlbumListODS" runat="server" OldValuesParameterFormatString="original_{0}" 
-        SelectMethod="Album_FindByArtist" TypeName="ChinookSystem.BLL.AlbumController">
+        SelectMethod="Album_FindByArtist" TypeName="ChinookSystem.BLL.AlbumController" OnSelected="CheckForException">
         <SelectParameters>
             <asp:ControlParameter ControlID="ArtistList" PropertyName="SelectedValue" DefaultValue="0" Name="artistid" Type="Int32"></asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
+  
     <asp:ObjectDataSource ID="EditArtistListODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="Artists_List" 
-        TypeName="ChinookSystem.BLL.ArtistController">
+        TypeName="ChinookSystem.BLL.ArtistController" OnSelected="CheckForException">  
     </asp:ObjectDataSource>
+
 </asp:Content>
