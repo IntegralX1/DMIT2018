@@ -11,7 +11,7 @@ namespace DMIT2018Common.UserControls
 {
     public delegate void ProcessRequest();
 
-    public partial class MessageUserControl : System.Web.UI.UserControl
+    public partial class messageUserControl : System.Web.UI.UserControl
     {
         #region String Constants
         private const string STR_TITLE_GeneralErrors = "Processing Error";
