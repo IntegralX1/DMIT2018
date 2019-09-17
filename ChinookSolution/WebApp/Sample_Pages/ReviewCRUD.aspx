@@ -9,8 +9,34 @@
         code-behind and ObjectDataSource on multi-record controls. This page will
         use various form controls. This will review event driven logic reuired for a CRUD process.
     </blockquote>
+
+
     <div class="col-md-offset-1">
         <uc1:messageUserControl runat="server" id="messageUserControl" />
+        <br /><br />
+        <!--Validation controls -->
+        <asp:RequiredFieldValidator ID="RequiredFieldEditTitle" runat="server" 
+            ErrorMessage="Title field is required" Display="None" 
+            ForeColor="IndianRed" SetFocusOnError="true"
+            ControlToValidate="EditTitle">
+        </asp:RequiredFieldValidator>
+          <asp:RequiredFieldValidator 
+            ID="RequiredFieldEditReleaseYear" 
+            runat="server" 
+            ErrorMessage="Year field is required" Display="None" 
+            ForeColor="IndianRed" SetFocusOnError="true"
+            ControlToValidate="EditReleaseYear">
+        </asp:RequiredFieldValidator>
+        <asp:RangeValidator 
+            ID="RangeEditReleaseYear" 
+            runat="server" 
+            ErrorMessage="Year needs to be between 1950 and today." 
+            Display="None" ForeColor="IndianRed" 
+            SetFocusOnError="true" 
+            ControlToValidate="EditReleaseYear"
+            Type="Integer" MinimumValue="1950" >
+        </asp:RangeValidator>
+        <asp:ValidationSummary ID="ValidationSummary" runat="server" /><br />
         <asp:Label ID="label1" runat="server" Text="Select an artist:"></asp:Label>
         &nbsp;&nbsp;
         <asp:DropDownList ID="ArtistList" runat="server"></asp:DropDownList>

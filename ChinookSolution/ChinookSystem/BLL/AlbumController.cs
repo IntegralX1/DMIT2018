@@ -42,7 +42,8 @@ namespace ChinookSystem.BLL
                 var results = from x in context.Albums
                               where x.ArtistId == artistid
                               select x;
-                throw new Exception("Boom!");
+
+                //throw new Exception("Boom!");
 
                 return results.ToList();
             }
