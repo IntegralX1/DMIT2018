@@ -199,10 +199,11 @@ namespace WebApp.Sample_Pages
                     if (rowsaffected > 0)
                     {
                         AlbumList.DataBind(); //re-executes the ods for the album list
+                        EditAlbumID.Text = "";
                     }
                     else
                     {
-                        messageUserControl.ShowInfo("Hello, I am title", "You monster!");
+                        messageUserControl.ShowInfo("Hello, I am a title", "You monster!");
                     }
 
                 }, "Successful", "Album removed, you monster!");
