@@ -36,6 +36,7 @@
             ControlToValidate="EditReleaseYear"
             Type="Integer" MinimumValue="1950" >
         </asp:RangeValidator>
+        <!--Must have user validation control Summary or it won't work-->
         <asp:ValidationSummary ID="ValidationSummary" runat="server" /><br />
         <asp:Label ID="label1" runat="server" Text="Select an artist:"></asp:Label>
         &nbsp;&nbsp;
