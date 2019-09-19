@@ -65,7 +65,7 @@ namespace WebApp.Sample_Pages
                 Album datainfo = sysmgr.Album_Get(int.Parse(albumid));
                 if (datainfo == null)
                 {
-                    //ClearControls();
+                    ClearControls();
                     //throw an exception at dem bitchez
                     throw new Exception("Record no longer exists on file.");
 
@@ -87,6 +87,58 @@ namespace WebApp.Sample_Pages
         }
 
         protected void AlbumListODS_Selected(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+
+        }
+
+        protected void ClearControls()
+        {
+            EditAlbumID.Text = "";
+            EditTitle.Text = "";
+            EditReleaseYear.Text = "";
+            EditReleaseLabel.Text = "";
+            EditAlbumArtistList.SelectedIndex = 0;
+
+        }
+
+        protected void Add_Click(object sender, EventArgs e)
+        {
+            //Check validation and additional validation within the code behind.
+            //Load up the entity 
+            if (Page.IsValid)
+            {
+                string albumtitle = EditTitle.Text;
+                int albumyear = int.Parse(EditReleaseYear.Text);
+                string albumlabel = EditReleaseLabel.Text == "" ? null : EditReleaseLabel.Text;
+                int albumartist = int.Parse(EditAlbumArtistList.SelectedValue);
+
+                Album theAlbum = new Album();
+                //brings in values to the webpage
+                theAlbum.Title = albumtitle;
+                theAlbum.ArtistId = albumartist;
+                theAlbum.ReleaseYear = albumyear;
+                theAlbum.ReleaseLabel = albumlabel;
+
+                messageUserControl.TryRun(() => {
+
+                    AlbumController sysmgr = new AlbumController();
+                    int albumid = sysmgr.Album_Add(theAlbum);
+                    EditAlbumID.Text = albumid.ToString();
+                    if (AlbumList.Rows.Count > 0)
+                    {
+                        AlbumList.DataBind(); //re-executes the ods for the album list
+                    }
+
+                },"Successful", "Album added");
+            }
+        }
+
+        protected void Update_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Remove_Click(object sender, EventArgs e)
         {
 
         }
