@@ -135,12 +135,78 @@ namespace WebApp.Sample_Pages
 
         protected void Update_Click(object sender, EventArgs e)
         {
+            if (Page.IsValid)
+            {
+                int editalbumid = 0;
+                string albumid = EditAlbumID.Text;
+                if (string.IsNullOrEmpty(albumid))
+                {
+                    messageUserControl.ShowInfo("Attention, Actung! Arrividarchi!","Lookup the album before editing, please.");
+                }
+                else if (!int.TryParse(albumid, out editalbumid))
+                {
+                    throw new Exception("Current albumid is invalid. Perform lookup again, please.");
+                }
+                else
+                {
+                    Album theAlbum = new Album();
+                    //brings in values to the webpage
+                    theAlbum.AlbumId = editalbumid;
+                    theAlbum.Title = EditTitle.Text;
+                    theAlbum.ArtistId = int.Parse(EditAlbumArtistList.SelectedValue); 
+                    theAlbum.ReleaseYear = int.Parse(EditReleaseYear.Text);
+                    theAlbum.ReleaseLabel = EditReleaseLabel.Text == "" ? null : EditReleaseLabel.Text;
 
+                    messageUserControl.TryRun(() =>
+                    {
+
+                        AlbumController sysmgr = new AlbumController();
+                        int rowsaffected = sysmgr.Album_Update(theAlbum);
+                        if (rowsaffected > 0)
+                        {
+                            AlbumList.DataBind(); //re-executes the ods for the album list
+                        }
+                        else
+                        {
+                            messageUserControl.ShowInfo("Hello, I am title","Album was not found. Repeat lookup and update again.");
+                        }
+
+                    }, "Successful", "Album added");
+                }
+            }
         }
 
         protected void Remove_Click(object sender, EventArgs e)
         {
+            int editalbumid = 0;
+            string albumid = EditAlbumID.Text;
+            if (string.IsNullOrEmpty(albumid))
+            {
+                messageUserControl.ShowInfo("Attention, Actung! Arrividarchi!", "Lookup the album before editing, please.");
+            }
+            else if (!int.TryParse(albumid, out editalbumid))
+            {
+                throw new Exception("Current albumid is invalid. Perform lookup again, please.");
+            }
+            else
+            {
+             
+                messageUserControl.TryRun(() =>
+                {
 
+                    AlbumController sysmgr = new AlbumController();
+                    int rowsaffected = sysmgr.Album_Delete(editalbumid);
+                    if (rowsaffected > 0)
+                    {
+                        AlbumList.DataBind(); //re-executes the ods for the album list
+                    }
+                    else
+                    {
+                        messageUserControl.ShowInfo("Hello, I am title", "You monster!");
+                    }
+
+                }, "Successful", "Album removed, you monster!");
+            }
         }
     }
 }
