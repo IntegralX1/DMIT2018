@@ -9,6 +9,10 @@
     </blockquote>
 
     <uc1:messageUserControl runat="server" ID="messageUserControl" />
+    <asp:ValidationSummary ID="ValidationSummaryInsert" runat="server" 
+        HeaderText="Correct the following conern on the insert record." ValidationGroup ="IGroup"/>
+    <asp:ValidationSummary ID="ValidationSummaryEdit" runat="server" 
+        HeaderText="Correct the following conern on the edit record." ValidationGroup ="EGroup"/>
     <br />
     <asp:ListView ID="AlbumList" runat="server" DataSourceID="AlbumListODS" InsertItemPosition="LastItem" DataKeyNames="AlbumId">
         <AlternatingItemTemplate>
@@ -63,8 +67,16 @@
                 ErrorMessage="Year must be between 1950 and today"
                 ValidationGroup="EGroup"
                 ControlToValidate="ReleaseYearTextBoxE"
-                MinimumValue="1950" MaximumValue='<%# DateTime.Today.Year %>'>
+                MinimumValue="1950" MaximumValue='<%# DateTime.Today.Year %>'
+                Type="Integer">
             </asp:RangeValidator>
+             <asp:RegularExpressionValidator 
+                ID="RegExReleaseLabelTextBoxE" 
+                runat="server" 
+                ErrorMessage="Label is limited to 50 characters" Display="None"
+                ControlToValidate="ReleaseLabelTextBoxE" ValidationGroup="EGroup"
+                ValidationExpression="^.{0,50}$">
+            </asp:RegularExpressionValidator>
             <tr style="background-color: #008A8C; color: #000000;">
                 <td>
                     <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" />
@@ -86,7 +98,7 @@
                 <td>
                     <asp:TextBox Text='<%# Bind("ReleaseYear") %>' runat="server" ID="ReleaseYearTextBoxE" Width="50px"/></td>
                 <td>
-                    <asp:TextBox Text='<%# Bind("ReleaseLabel") %>' runat="server" ID="ReleaseLabelTextBox" /></td>
+                    <asp:TextBox Text='<%# Bind("ReleaseLabel") %>' runat="server" ID="ReleaseLabelTextBoxE" /></td>
             </tr>
         </EditItemTemplate>
         <EmptyDataTemplate>
@@ -115,7 +127,8 @@
                 ErrorMessage="Year must be between 1950 and today"
                 ValidationGroup="IGroup"
                 ControlToValidate="ReleaseYearTextBoxI"
-                MinimumValue="1950" MaximumValue='<%# DateTime.Today.Year %>'>
+                MinimumValue="1950" MaximumValue='<%# DateTime.Today.Year %>'
+                Type="Integer">
             </asp:RangeValidator>
             <asp:RegularExpressionValidator 
                 ID="RegExReleaseLabelTextBoxI" 
