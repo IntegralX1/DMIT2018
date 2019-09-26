@@ -10,8 +10,8 @@ namespace ChinookSystem.Data.POCOs
     {
         public string Title { get; set; }
         public string Artist { get; set; }
-        public int Ryear { get; set; }
-        public string Rlabel { get; set; }
+        public int RYear { get; set; }
+        public string RLabel { get; set; }
         public string ArtistName { get; set; }
     }
 }

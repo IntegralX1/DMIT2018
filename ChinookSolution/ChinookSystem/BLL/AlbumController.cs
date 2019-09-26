@@ -41,7 +41,10 @@ namespace ChinookSystem.BLL
                                   RYear = x.ReleaseYear,
                                   RLabel = x.ReleaseLabel
                               };
+                
             }
+
+            
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
