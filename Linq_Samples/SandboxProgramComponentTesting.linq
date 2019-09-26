@@ -9,15 +9,16 @@
 
 void Main()
 {
+	string artistname = "Deep Purple";
 	var results = from x in Albums
-				where x.Artist.Name.Equals("Deep Purple")
+				where x.Artist.Name.Equals(artistname)
 				orderby x.ReleaseYear, x.Title
 				select new AlbumsOfArtist
 				{
 					Title = x.Title, 
 					ArtistName = x.Artist.Name, 
 					RYear = x.ReleaseYear,
-					RLable = x.ReleaseLabel
+					RLabel = x.ReleaseLabel
 				};
 				
 //to display the contents of a variable in linqpad
@@ -31,6 +32,7 @@ public class AlbumsOfArtist
 {
 	public string Title {get; set;}
 	public string Artist {get; set;}
-	public int Ryear {get; set;}
-	public string Rlabel {get; set;}
+	public int RYear {get; set;}
+	public string RLabel {get; set;}
+	public string AristName {get; set;}
 }

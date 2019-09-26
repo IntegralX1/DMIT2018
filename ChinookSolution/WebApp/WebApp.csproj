@@ -193,6 +193,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Sample_Pages\DisplayArtistAlbums.aspx" />
     <Content Include="Sample_Pages\ReviewCRUD.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -367,6 +368,13 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample_Pages\DisplayArtistAlbums.aspx.cs">
+      <DependentUpon>DisplayArtistAlbums.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sample_Pages\DisplayArtistAlbums.aspx.designer.cs">
+      <DependentUpon>DisplayArtistAlbums.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sample_Pages\ReviewCRUD.aspx.cs">
       <DependentUpon>ReviewCRUD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
