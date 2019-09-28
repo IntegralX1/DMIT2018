@@ -41,7 +41,8 @@ namespace ChinookSystem.BLL
                                   RYear = x.ReleaseYear,
                                   RLabel = x.ReleaseLabel
                               };
-                
+
+                return results.ToList();
             }
 
             

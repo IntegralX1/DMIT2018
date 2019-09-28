@@ -36,3 +36,4 @@ public class AlbumsOfArtist
 	public string RLabel {get; set;}
 	public string ArtistName {get; set;}
 }
+
