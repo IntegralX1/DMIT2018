@@ -194,6 +194,7 @@
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Sample_Pages\DisplayArtistAlbums.aspx" />
+    <Content Include="Sample_Pages\RepeaterDisplay.aspx" />
     <Content Include="Sample_Pages\ReviewCRUD.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -374,6 +375,13 @@
     </Compile>
     <Compile Include="Sample_Pages\DisplayArtistAlbums.aspx.designer.cs">
       <DependentUpon>DisplayArtistAlbums.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sample_Pages\RepeaterDisplay.aspx.cs">
+      <DependentUpon>RepeaterDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sample_Pages\RepeaterDisplay.aspx.designer.cs">
+      <DependentUpon>RepeaterDisplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sample_Pages\ReviewCRUD.aspx.cs">
       <DependentUpon>ReviewCRUD.aspx</DependentUpon>

@@ -80,6 +80,7 @@
                                 <asp:MenuItem Text="Review CRUD" NavigateUrl="~/Sample_Pages/ReviewCRUD.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="Listview CRUD ODS" NavigateUrl="~/Sample_Pages/ListViewCRUDODS.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="LinqPad to WebApp" NavigateUrl="~/Sample_Pages/DisplayARtistAlbums.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Repeater Display" NavigateUrl="~/Sample_Pages/RepeaterDisplay.aspx"></asp:MenuItem>
                             </asp:MenuItem>
                         </Items>
                     </asp:Menu>
