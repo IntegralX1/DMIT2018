@@ -13,15 +13,6 @@ namespace WebApp.Sample_Pages {
     public partial class DisplayArtistAlbums {
         
         /// <summary>
-        /// ArtistAlbumsList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ArtistAlbumsList;
-        
-        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace WebApp.Sample_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Fetch;
+        
+        /// <summary>
+        /// ArtistAlbumsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView ArtistAlbumsList;
         
         /// <summary>
         /// ArtistAlbumsListODS control.

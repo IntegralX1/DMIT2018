@@ -10,6 +10,7 @@ using ChinookSystem.Data.Entities;
 using System.ComponentModel;
 using DMIT2018Common.UserControls;
 using ChinookSystem.Data.POCOs;
+using ChinookSystem.Data.DTOs;
 #endregion
 
 namespace ChinookSystem.BLL
@@ -32,7 +33,7 @@ namespace ChinookSystem.BLL
                 //unlike linqpad which is LINQ to sql 
                 //within our application it is LINQ to Entities
                 var results = from x in context.Albums
-                              where x.Artist.Name.Equals(artistname)
+                              where x.Artist.Name.Contains(artistname)
                               orderby x.ReleaseYear, x.Title
                               select new AlbumsOfArtist
                               {
@@ -41,7 +42,8 @@ namespace ChinookSystem.BLL
                                   RYear = x.ReleaseYear,
                                   RLabel = x.ReleaseLabel
                               };
-                
+
+                        return results.ToList();
             }
 
             
@@ -67,8 +69,6 @@ namespace ChinookSystem.BLL
         [DataObjectMethod(DataObjectMethodType.Select,false)] //annotation for ODS DB reference
         public List<Album> Album_FindByArtist(int artistid)
         {
-            Console.WriteLine("DESTROY ALL HUMANS");
-
             using (var context = new ChinookContext())
             {
                 //linq query using navigation properties.
@@ -78,6 +78,32 @@ namespace ChinookSystem.BLL
 
                 //throw new Exception("Boom!");
 
+                return results.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<AlbumDTO> Album_AlbumAndTracks()
+        {
+            using (var context = new ChinookContext())
+            {
+                var results = from x in context.Albums
+                              where x.Tracks.Count() > 25
+                              select new AlbumDTO
+                              {
+                                  AlbumTitle = x.Title,
+                                  AlbumArtist = x.Artist.Name,
+                                  TrackCount = x.Tracks.Count(),
+                                  PlayTime = x.Tracks.Sum(z => z.Milliseconds),
+                                  AlbumTracks = (from y in x.Tracks
+                                                 select new TrackPOCO
+                                                 {
+                                                     SongName = y.Name,
+                                                     SongGenre = y.Genre.Name,
+                                                     SongLength = y.Milliseconds
+                                                 }).ToList()
+
+                              };
                 return results.ToList();
             }
         }
