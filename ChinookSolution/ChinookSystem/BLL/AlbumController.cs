@@ -44,6 +44,7 @@ namespace ChinookSystem.BLL
                               };
 
                         return results.ToList();
+                return results.ToList();
             }
 
             
@@ -92,6 +93,7 @@ namespace ChinookSystem.BLL
                               select new AlbumDTO
                               {
                                   AlbumTitle = x.Title,
+                                  Albumtitle = x.Title,
                                   AlbumArtist = x.Artist.Name,
                                   TrackCount = x.Tracks.Count(),
                                   PlayTime = x.Tracks.Sum(z => z.Milliseconds),
@@ -105,6 +107,11 @@ namespace ChinookSystem.BLL
 
                               };
                 return results.ToList();
+
+                                                 }).ToList()
+                              };
+
+                              return results.ToList();
             }
         }
 
@@ -172,6 +179,7 @@ namespace ChinookSystem.BLL
                 }
             }
         }
+
 
         #endregion
 

@@ -34,5 +34,6 @@ public class AlbumsOfArtist
 	public string Artist {get; set;}
 	public int RYear {get; set;}
 	public string RLabel {get; set;}
-	public string AristName {get; set;}
+	public string ArtistName {get; set;}
 }
+

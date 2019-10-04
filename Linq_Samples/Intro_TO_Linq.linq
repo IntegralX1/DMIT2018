@@ -19,9 +19,9 @@ Artists.Select (x => x)
 //find any artist whose name contains the string 'son'
 //query syntax
 
-from whatever in Artists 
-where whatever.Name.Contains("son")
-select whatever
+from x in Artists 
+where x.Name.Contains("son")
+select x
 
 //method syntax
 Artists
@@ -84,4 +84,3 @@ select new
 	RYear = x.ReleaseYear,
 	RLable = x.ReleaseLabel
 }
-

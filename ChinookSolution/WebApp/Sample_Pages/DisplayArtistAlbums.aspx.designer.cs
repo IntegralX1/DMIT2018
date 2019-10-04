@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApp.Sample_Pages {
+namespace WebApp.SamplePages {
     
     
     public partial class DisplayArtistAlbums {
