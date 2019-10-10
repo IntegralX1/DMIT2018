@@ -10,11 +10,6 @@ using ChinookSystem.Data.POCOs;
 #endregion
 
 
-#region
-using ChinookSystem.Data.POCOs;
-
-#endregion
-
 namespace ChinookSystem.Data.DTOs
 {
     public class AlbumDTO

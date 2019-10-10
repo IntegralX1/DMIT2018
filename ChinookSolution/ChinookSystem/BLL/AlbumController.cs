@@ -44,7 +44,6 @@ namespace ChinookSystem.BLL
                               };
 
                         return results.ToList();
-                return results.ToList();
             }
 
             
@@ -107,11 +106,6 @@ namespace ChinookSystem.BLL
 
                               };
                 return results.ToList();
-
-                                                 }).ToList()
-                              };
-
-                              return results.ToList();
             }
         }
 
