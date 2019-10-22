@@ -1,16 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DisplayArtistAlbums.aspx.cs" Inherits="WebApp.SamplePages.DisplayArtistAlbums" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">   
+
+<%@ Register Src="~/UserControls/messageUserControl.ascx" TagPrefix="uc1" TagName="messageUserControl" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
+    <uc1:messageUserControl runat="server" id="messageUserControl" />
     <asp:Label ID="Label1" runat="server" Text="Enter your artist name (or partial search)" ></asp:Label>&nbsp;&nbsp;
-    <asp:TextBox ID="ArtistName" runat="server" placeholder="artist name"></asp:TextBox>&nbsp;&nbsp;
-    <asp:Button ID="Fetch" runat="server" Text="Fetch" CssClass="btn btn-primary" />&nbsp;&nbsp;<br/><br/>
+    <asp:TextBox ID="ArtistName1" runat="server" placeholder="artist name"></asp:TextBox>&nbsp;&nbsp;
+    <asp:Button ID="Fetch1" runat="server" Text="Fetch" CssClass="btn btn-primary" />&nbsp;&nbsp;<br/><br/>
     <asp:GridView ID="ArtistAlbumsList" 
         runat="server" 
-    <asp:Label ID="Label1" runat="server" Text="Enter your artist name (or partof)"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="Enter your artist name (or partof)"></asp:Label>
     &nbsp;&nbsp;
-    <asp:TextBox ID="ArtistName" runat="server"
+    <asp:TextBox ID="ArtistName2" runat="server"
          placeholder="artist name"></asp:TextBox>
     &nbsp;&nbsp;
-    <asp:Button ID="Fetch" runat="server" Text="Fetch"
+    <asp:Button ID="Fetch2" runat="server" Text="Fetch"
          CssClass="btn btn-primary"/><br/><br/>
     <asp:GridView ID="ArtistAlbumsList" runat="server" 
         AutoGenerateColumns="False" 
