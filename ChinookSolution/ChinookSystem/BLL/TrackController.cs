@@ -53,11 +53,65 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-                List<TrackList> results = null;
+                
+                //check the incoming parameters and 
+                //if needed set to a default value
+                if (string.IsNullOrEmpty(tracksby))
+                {
+                    tracksby = "";
+                }
+                if (string.IsNullOrEmpty(arg))
+                {
+                    arg = "";
+                }
+                //create two local variables representing the argument
+                //as a a) an integer b) as a string
 
-               //code to go here
+                int argid = 0;
+                string argstring = "zvsggdg31453tedg";
 
-                return results;
+                //determine if incoming argument should be an int or a string
+                if(tracksby.Equals("Genre") || tracksby.Equals("mediaType"))
+                {
+                    argid = int.Parse(arg);
+                }
+                else
+                {
+                    argstring = arg.Trim();
+                }
+                var results = (from x in context.Tracks
+                               where (x.GenreId == argid && tracksby.Equals("Genre") ||
+                               x.MediaTypeId == argid && tracksby.Equals("MediaType"))
+                               select new TrackList
+                               {
+                                   TrackID = x.TrackId,
+                                   Name = x.Name,
+                                   Title = x.Album.Title,
+                                   ArtistName = x.Album.Artist.Name,
+                                   MediaName = x.MediaType.Name,
+                                   GenreName = x.Genre.Name,
+                                   Composer = x.Composer,
+                                   Milliseconds = x.Milliseconds,
+                                   Bytes = x.Bytes,
+                                   UnitPrice = x.UnitPrice
+                               }
+                               ).Union(from x in context.Tracks
+                                       where tracksby.Equals("Artist") ? x.Album.Artist.Name.Contains(argstring) :
+                                       tracksby.Equals("Album") ? x.Album.Title.Contains(argstring) : false
+                                       select new TrackList
+                                       {
+                                           TrackID = x.TrackId,
+                                           Name = x.Name,
+                                           Title = x.Album.Title,
+                                           ArtistName = x.Album.Artist.Name,
+                                           MediaName = x.MediaType.Name,
+                                           GenreName = x.Genre.Name,
+                                           Composer = x.Composer,
+                                           Milliseconds = x.Milliseconds,
+                                           Bytes = x.Bytes,
+                                           UnitPrice = x.UnitPrice
+                                       });
+                return results.ToList();
             }
         }//eom
 

@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="OLTP Playlist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManagePlaylist.aspx.cs" Inherits="Jan2018DemoWebsite.SamplePages.ManagePlaylist" %>
-
 <%@ Register Src="~/UserControls/messageUserControl.ascx" TagPrefix="uc1" TagName="messageUserControl" %>
 
 
@@ -197,7 +196,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Name">
                     <ItemTemplate>
-                        <asp:Label runat="server" ID="TrachName"
+                        <asp:Label runat="server" ID="TrackName"
                             Text='<%# Eval("TrackName") %>'></asp:Label>
                           &nbsp;&nbsp;
                     </ItemTemplate>
