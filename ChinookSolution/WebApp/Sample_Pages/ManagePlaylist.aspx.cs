@@ -143,8 +143,42 @@ namespace Jan2018DemoWebsite.SamplePages
         protected void TracksSelectionList_ItemCommand(object sender, 
             ListViewCommandEventArgs e)
         {
-            //code to go here
-            
+            //do we have the playlist name?
+            if (string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                messageUserControl.ShowInfo("Required data", "Playlist name is required to add a track");
+
+            }
+            else
+            {
+                //collect the required data for the event
+                string playlistname = PlaylistName.Text;
+                //the user name will come from the security form, which we don't have at this point.
+                //we will use a hard coded string instead for HansenB
+                string username = "HansenB";
+                //obtain the track id from the ListView
+                //the track id will be in the commandArg property of the
+                // ListViewCommandEventArgs e instance
+                //the commandarg in e is returned as an object and 
+                //needs to be cast as a string in order to parse it as an int.
+                int trackid = int.Parse(e.CommandArgument.ToString());
+
+                //using the obtained data, issue your call to the BLL method.
+                //this work will be done within a TryRun() as we need some error handling
+                messageUserControl.TryRun(() =>
+                {
+                    PlaylistTracksController sysmgr = new PlaylistTracksController();
+                    //there is only one call to add the data to the database
+                    sysmgr.Add_TrackToPLaylist(playlistname, username, trackid);
+                    //refresh the playlist is a READ only.
+                    List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(playlistname, username);
+                    PlayList.DataSource = datainfo;
+                    PlayList.DataBind();
+                }, "Adding a Track", "Track has been added to the playlist");
+
+
+            }
+
         }
 
     }
