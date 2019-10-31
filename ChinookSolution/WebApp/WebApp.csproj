@@ -17,10 +17,14 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44304</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -190,6 +194,7 @@
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Sample_Pages\DisplayArtistAlbums.aspx" />
+    <Content Include="Sample_Pages\ManagePlaylist.aspx" />
     <Content Include="Sample_Pages\RepeaterDisplay.aspx" />
     <Content Include="Sample_Pages\ReviewCRUD.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -371,6 +376,13 @@
     </Compile>
     <Compile Include="Sample_Pages\DisplayArtistAlbums.aspx.designer.cs">
       <DependentUpon>DisplayArtistAlbums.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sample_Pages\ManagePlaylist.aspx.cs">
+      <DependentUpon>ManagePlaylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sample_Pages\ManagePlaylist.aspx.designer.cs">
+      <DependentUpon>ManagePlaylist.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sample_Pages\RepeaterDisplay.aspx.cs">
       <DependentUpon>RepeaterDisplay.aspx</DependentUpon>

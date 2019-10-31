@@ -5,7 +5,9 @@ namespace ChinookSystem.Data.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    //playlist record is added first
+    //takes the playlist number and puts it into the playlist record
+    //the secret is that everything has to be staged first before it is written to the db
     public partial class Playlist
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

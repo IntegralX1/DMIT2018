@@ -1,4 +1,4 @@
-<Query Kind="Expression">
+<Query Kind="Statements">
   <Connection>
     <ID>75baaaef-b5fb-4b1a-a673-f8768ef58ae9</ID>
     <Persist>true</Persist>
@@ -80,8 +80,9 @@ select new
 {
 
 genre = gTracks.Key.GenreId,
-media = gTracks.Key.name,
+media = gTracks.Key,
 trackcount = gTracks.Count()
+
 }
 
 //create a list of albums by release year
