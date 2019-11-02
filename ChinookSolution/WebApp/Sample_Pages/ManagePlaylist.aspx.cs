@@ -271,8 +271,58 @@ namespace Jan2018DemoWebsite.SamplePages
 
         protected void DeleteTrack_Click(object sender, EventArgs e)
         {
-            //code to go here
- 
+            if (string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                messageUserControl.ShowInfo("Required data", "Playlist name is required to add a track");
+
+            }
+            else
+            {
+                if (PlayList.Rows.Count == 0)
+                {
+                    messageUserControl.ShowInfo("Required data", "No playlist is available. Retreiev your playlist.");
+                }
+                else
+                {
+                    //traverse the gridview and collect the list of tracks
+                    //to remove.
+                    List<int> trackstodelete = new List<int>();
+                    int rowselected = 0;
+                    CheckBox playlistselection = null;
+
+                    for (int rowindex = 0; rowindex < PlayList.Rows.Count; rowindex++)
+                    {
+                        playlistselection = PlayList.Rows[rowindex].FindControl("Selected") as CheckBox;
+                        if (playlistselection.Checked)
+                        {
+                            //increment selected number of rows
+                            rowselected++;
+                            //gather the data needed for the BLL call
+                            trackstodelete.Add(int.Parse((PlayList.Rows[rowindex].FindControl("TrackID") as Label).Text));
+                        }
+                    }
+
+                    if (rowselected == 0)
+                    {
+                        messageUserControl.ShowInfo("Required data", "You must select at least one track to remove. ");
+                    }
+                    else
+                    {
+                        //send list of tracks to be removed by BLL
+                        messageUserControl.TryRun(() =>
+                        {
+                            PlaylistTracksController sysmgr = new PlaylistTracksController();
+                            //there is only one call to add the data to the database
+                            sysmgr.DeleteTracks("HansenB", PlaylistName.Text, trackstodelete);
+                            //refresh the playlist is a READ only.
+                            List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, "HansenB");
+                            PlayList.DataSource = datainfo;
+                            PlayList.DataBind();
+                        }, "Remove Track(s)", "Track has been removed from the playlist");
+
+                    }
+                }
+            }
         }
 
         protected void TracksSelectionList_ItemCommand(object sender, 
