@@ -1,9 +1,10 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>75baaaef-b5fb-4b1a-a673-f8768ef58ae9</ID>
+    <ID>fbb61d69-118b-4bb3-a792-af6176680921</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>Chinook</Database>
+    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
@@ -61,7 +62,7 @@ Albums
    .OrderByDescending (x => x.ReleaseYear)
    .ThenBy (x => x.Title)
    
-//Can navigational properties be used in queries
+//Can navigational properties be used in queries?
 //Create a list of albums by Deep Purple 
 //order by release year and title
 from x in Albums
