@@ -244,10 +244,7 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-               if(string.IsNullOrEmpty(playlistname))
-                {
-                    //does the playlist exist?
-                    
+
                     var exists = (from x in context.Playlists
                                   where x.UserName.Equals(username,StringComparison.OrdinalIgnoreCase) 
                                   && x.Name.Equals(playlistname,StringComparison.OrdinalIgnoreCase)
@@ -292,7 +289,7 @@ namespace ChinookSystem.BLL
                         context.SaveChanges();
 
                     }
-                }
+                
 
 
             }
