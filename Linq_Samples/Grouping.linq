@@ -1,9 +1,9 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>75baaaef-b5fb-4b1a-a673-f8768ef58ae9</ID>
-    <Persist>true</Persist>
+    <ID>e52ae3b7-5727-4a23-93cf-dcb04678a0c5</ID>
     <Server>.</Server>
     <Database>Chinook</Database>
+    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
@@ -32,7 +32,7 @@ group x by x.GenreId into gGenre
 select new
 {
 	groupid = gGenre.Key,
-	tracks = gGenre.ToList()
+	tracks = gGenre.ToList() 
 }
 
 //selected fields from within each grou
@@ -62,7 +62,6 @@ from x in Tracks
 group x by new {x.GenreId, x.MediaTypeId} into gTracks
 select new
 {
-
 genre = gTracks.Key.GenreId,
 media = gTracks.Key.Name,
 trackcount = gTracks.Count()
