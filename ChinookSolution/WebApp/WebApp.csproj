@@ -225,6 +225,8 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Security\AccessDenied.aspx" />
+    <Content Include="Security\SecurityAdmin.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Sample_Pages\ListViewCRUDODS.aspx" />
     <Content Include="UserControls\messageUserControl.ascx" />
@@ -233,6 +235,7 @@
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="WebConnectionStrings.config" />
+    <Content Include="WebAppSettings.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AddPhoneNumber.aspx.cs">
@@ -398,6 +401,22 @@
     <Compile Include="Sample_Pages\ReviewCRUD.aspx.designer.cs">
       <DependentUpon>ReviewCRUD.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Security\AccessDenied.aspx.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\AccessDenied.aspx.designer.cs">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityAdmin.aspx.cs">
+      <DependentUpon>SecurityAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\SecurityAdmin.aspx.designer.cs">
+      <DependentUpon>SecurityAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityController.cs" />
+    <Compile Include="Security\SecurityDbContextInitializer.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
