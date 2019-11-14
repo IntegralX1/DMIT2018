@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChinookSystem.Data.DTOs.AlbumDTO" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAACBAAAAAAAAQAAIAAAAA=</HashCode>
+      <FileName>DTOs\AlbumDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Album" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAEAAAAEAEAgAgIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Album.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Artist" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Entities\Artist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Customer" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAgCAAAAAIIABAAAAACAIAABACAAAAJCAAAAg=</HashCode>
+      <FileName>Entities\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Employee" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQEAAgCAAAEAIIAAAAAQACCIAAIACAAAAJAACAAg=</HashCode>
+      <FileName>Entities\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Genre" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Invoice" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAIAAAEAAAAACAAAAAAAAgAAAAQBCAAQAABAAAAAA=</HashCode>
+      <FileName>Entities\Invoice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.InvoiceLine" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAAEAAAAAAAAAAIAAAAAAEAAAAAAAAgAAAAQA=</HashCode>
+      <FileName>Entities\InvoiceLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.MediaType" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\MediaType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Playlist" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAQAAAAACAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Playlist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.PlaylistTrack" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAEAAAAAAAAABAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\PlaylistTrack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.Entities.Track" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAAAAAAAAACAIAiAAAIAAAQAgAAECAAAAAAICEAAAAA=</HashCode>
+      <FileName>Entities\Track.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.POCOs.AlbumsOfArtist" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAEAAAAAAAAAAAAAAgACAAAAAAAAAAAA=</HashCode>
+      <FileName>POCOs\AlbumsOfArtist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.POCOs.SelectionList" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>POCOs\SelectionList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.POCOs.TrackPOCO" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>POCOs\TrackPOCO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookSystem.Data.POCOs.UserPlaylistTrack" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAABAACAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>POCOs\UserPlaylistTrack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chinook.Data.POCOs.TrackList" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAACAAEAAAAAAAAQAABAAAACABAAIAEAAAAI=</HashCode>
+      <FileName>POCOs\TrackList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
