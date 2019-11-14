@@ -16,7 +16,6 @@ namespace ChinookSystem.Data.DTOs
     {
 
         public string AlbumTitle { get; set; }
-
         public string Albumtitle { get; set; }
         public string AlbumArtist { get; set; }
         public int TrackCount { get; set; }
