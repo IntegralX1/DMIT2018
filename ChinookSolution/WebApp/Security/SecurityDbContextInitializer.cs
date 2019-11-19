@@ -34,32 +34,30 @@ namespace WebApp.Security
             #endregion
 
             #region Seed the users
-           
-            //hard coding a new user example
-            string userPassword = ConfigurationManager.AppSettings["newUserPassword"];
+            string adminUser = ConfigurationManager.AppSettings["adminUserName"];
+            string adminRole = ConfigurationManager.AppSettings["adminRole"];
+            string adminEmail = ConfigurationManager.AppSettings["adminEmail"];
+            string adminPassword = ConfigurationManager.AppSettings["adminPassword"];
             var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             var result = userManager.Create(new ApplicationUser
             {
+                UserName = adminUser,
+                Email = adminEmail
+            }, adminPassword);
+            if (result.Succeeded)
+                userManager.AddToRole(userManager.FindByName(adminUser).Id, adminRole);
+
+            //hard coding example
+            string userPassword = ConfigurationManager.AppSettings["newUserPassword"];
+            result = userManager.Create(new ApplicationUser
+            {
                 UserName = "HansenB",
-                Email = "hansenB@hotmail.somewhere.ca",
+                Email = "HansenB@hotmail.somewhere.ca",
                 CustomerId = 4
             }, userPassword);
             if (result.Succeeded)
                 userManager.AddToRole(userManager.FindByName("HansenB").Id, "Customers");
 
-            string customerUser = ConfigurationManager.AppSettings["customerUserName"];
-            string customerRole = ConfigurationManager.AppSettings["customerRole"];
-            string customerEmail = ConfigurationManager.AppSettings["customerEmail"];
-            string customerPassword = ConfigurationManager.AppSettings["customerPassword"];
-          
-            result = userManager.Create(new ApplicationUser
-            {
-                UserName = customerUser,
-                Email = customerEmail,
-                CustomerId = 4
-            }, customerPassword);
-            if (result.Succeeded)
-                userManager.AddToRole(userManager.FindByName(customerUser).Id, customerRole);
 
             //seeding employees from the employee table
             //TODO List:

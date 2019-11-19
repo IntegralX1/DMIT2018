@@ -7,8 +7,10 @@ using System.Web.UI.WebControls;
 
 #region Additonal Namespaces
 using ChinookSystem.BLL;
+using ChinookSystem.Data.Entities;
 using ChinookSystem.Data.POCOs;
 using DMIT2018Common.UserControls;
+using WebApp.Security;
 #endregion
 
 namespace Jan2018DemoWebsite.SamplePages
@@ -18,6 +20,38 @@ namespace Jan2018DemoWebsite.SamplePages
         protected void Page_Load(object sender, EventArgs e)
         {
             TracksSelectionList.DataSource = null;
+            if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Customers") || User.IsInRole("Customer Service"))
+                {
+                    var username = User.Identity.Name;
+                    SecurityController securitymgr = new SecurityController();
+                    int? customerid = securitymgr.GetCurrentUserCustomerId(username);
+                    if(customerid.HasValue)
+                    {
+                        messageUserControl.TryRun(() => {
+                            CustomerController sysmgr = new CustomerController();
+                            Customer info = sysmgr.Customer_Get(customerid.Value);
+                            CustomerName.Text = info.FullName;
+                        });
+                    }
+                    else
+                    {
+                        messageUserControl.ShowInfo("Unregistered User", "This user is not a registered customer");
+                        CustomerName.Text = "Unregistered User";
+                    }
+                }
+                else
+                {
+                    //redirect to a page that states no authorization fot the request action
+                    Response.Redirect("~/Security/AccessDenied.aspx");
+                }
+            }
+            else
+            {
+                //redirect to login page
+                Response.Redirect("~/Account/Login.aspx");
+            }
         }
 
         protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
@@ -102,7 +136,11 @@ namespace Jan2018DemoWebsite.SamplePages
             {
                 string playlistname = PlaylistName.Text;
                 //Until we do security, we will use a hard coded username.
-                string username = "HansenB";
+                //string username = "HansenB";
+                string username = User.Identity.Name;
+
+                //Once security is implemented you can obtain the 
+                //user name from User.Identity class property .Name
 
                 //do a standard query lookup to your controller
                 //use messageUserControl for error handling
@@ -260,8 +298,8 @@ namespace Jan2018DemoWebsite.SamplePages
         {
             messageUserControl.TryRun(() => {
                 PlaylistTracksController sysmgr = new PlaylistTracksController();
-                sysmgr.MoveTrack("HansenB", PlaylistName.Text, trackid, tracknumber, direction);
-                List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, "HansenB");
+                sysmgr.MoveTrack(User.Identity.Name, PlaylistName.Text, trackid, tracknumber, direction);
+                List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, User.Identity.Name);
                 PlayList.DataSource = datainfo;
                 PlayList.DataBind();
             }, "Success", "Track has been moved");
@@ -313,9 +351,9 @@ namespace Jan2018DemoWebsite.SamplePages
                         {
                             PlaylistTracksController sysmgr = new PlaylistTracksController();
                             //there is only one call to add the data to the database
-                            sysmgr.DeleteTracks("HansenB", PlaylistName.Text, trackstodelete);
+                            sysmgr.DeleteTracks(User.Identity.Name, PlaylistName.Text, trackstodelete);
                             //refresh the playlist is a READ only.
-                            List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, "HansenB");
+                            List<UserPlaylistTrack> datainfo = sysmgr.List_TracksForPlaylist(PlaylistName.Text, User.Identity.Name);
                             PlayList.DataSource = datainfo;
                             PlayList.DataBind();
                         }, "Remove Track(s)", "Track has been removed from the playlist");
@@ -340,7 +378,7 @@ namespace Jan2018DemoWebsite.SamplePages
                 string playlistname = PlaylistName.Text;
                 //the user name will come from the security form, which we don't have at this point.
                 //we will use a hard coded string instead for HansenB
-                string username = "HansenB";
+                string username = User.Identity.Name;
                 //obtain the track id from the ListView
                 //the track id will be in the commandArg property of the
                 // ListViewCommandEventArgs e instance
